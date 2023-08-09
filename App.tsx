@@ -4,6 +4,8 @@ import Entypo from '@expo/vector-icons/Entypo';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { AppButton } from './src/AppButton';
+import LoggedOutNav from './navigators/LoggedOutNav';
+import { NavigationContainer } from '@react-navigation/native';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -18,7 +20,7 @@ export default function App() {
         await Font.loadAsync(Entypo.font);
         // Artificially delay for two seconds to simulate a slow loading
         // experience. Please remove this if you copy and paste the code!
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
       } finally {
@@ -46,15 +48,8 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} onLayout={onLayoutRootView}>
-      <Text>SplashScreeasdfdfasdfsadfsafsn Demo! Page test👋</Text>
-      <Entypo name="rocket" size={30} />
-      <AppButton
-        title={'test Btn'}
-        onPress={function (): void {
-          throw new Error('Function not implemented.');
-        }}
-      ></AppButton>
-    </View>
+    <NavigationContainer>
+      <LoggedOutNav />
+    </NavigationContainer>
   );
 }
