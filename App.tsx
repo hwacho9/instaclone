@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import { AppButton } from './src/AppButton';
 import LoggedOutNav from './navigators/LoggedOutNav';
 import { NavigationContainer } from '@react-navigation/native';
+import { View, Text } from 'react-native';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -49,6 +48,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <View onLayout={onLayoutRootView}></View>
       <LoggedOutNav />
     </NavigationContainer>
   );
